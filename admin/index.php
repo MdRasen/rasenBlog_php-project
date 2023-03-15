@@ -10,8 +10,7 @@ if (isset($_POST['login_btn'])) {
 
 // Check if the user is logged
 session_start();
-$id = $_SESSION['adminID'];
-if ($id) {
+if (isset($_SESSION['adminID'])) {
     header("location:dashboard.php");
 }
 
