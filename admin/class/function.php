@@ -51,4 +51,15 @@ class adminBlog
             }
         }
     }
+
+    public function adminLogout()
+    {
+        // Clear information in session
+        unset($_SESSION['adminID']);
+        unset($_SESSION['adminName']);
+        unset($_SESSION['adminEmail']);
+
+        // Redirect to logged in page
+        header("location:index.php");
+    }
 }
