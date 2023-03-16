@@ -1,5 +1,5 @@
 <?Php
-
+$view = "index";
 include("class/function.php");
 $obj = new adminBlog();
 
@@ -13,7 +13,6 @@ session_start();
 if (isset($_SESSION['adminID'])) {
     header("location:dashboard.php");
 }
-
 ?>
 
 <?Php include_once("includes/head.php"); ?>

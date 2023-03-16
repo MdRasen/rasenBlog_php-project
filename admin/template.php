@@ -1,5 +1,6 @@
 <?php
-
+// ob_start() -> Location redirect solve
+ob_start();
 include("class/function.php");
 $obj = new adminBlog();
 
@@ -15,9 +16,7 @@ if (isset($_GET['adminlogout'])) {
         $obj->adminLogout();
     }
 }
-
 ?>
-
 <?Php include_once("includes/head.php"); ?>
 
 <body class="sb-nav-fixed">
