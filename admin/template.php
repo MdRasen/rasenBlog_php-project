@@ -34,6 +34,8 @@ if (isset($_GET['adminlogout'])) {
                             include("views/add_category_view.php");
                         } elseif ($view == "manage_category") {
                             include("views/manage_category_view.php");
+                        } elseif ($view == "edit_category") {
+                            include("views/edit_category_view.php");
                         } elseif ($view == "add_post") {
                             include("views/add_post_view.php");
                         } elseif ($view == "manage_post") {
