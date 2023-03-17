@@ -17,7 +17,7 @@ if (isset($_POST['cate_edit_submit'])) {
             </div>
             <div class="card-body">
                 <form action="#" method="POST">
-                    <input name="cate_id" class="form-control" id="inputCateId" type="text" value="<?= $result['id'] ?>" placeholder="Enter Category id" required />
+                    <input name="cate_id" class="form-control" id="inputCateId" type="hidden" value="<?= $result['id'] ?>" placeholder="Enter Category id" required />
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">

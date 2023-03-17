@@ -147,4 +147,33 @@ class adminBlog
             header("location:add_category.php?msg=failed");
         }
     }
+
+    // Create Post
+    public function post_create($data)
+    {
+        $post_title =  $data['post_title'];
+        $post_slug =  $data['post_slug'];
+        if (!$post_slug) {
+            $post_slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $post_title)));
+        }
+        $post_img = time() . '-' . $_FILES['post_img']['name'];
+
+        $post_img_src =  $_FILES['post_img']['tmp_name'];
+        $post_img_des = 'post_images/' . $_FILES['post_img']['name'];
+
+        $post_category =  $data['post_category'];
+        $post_desc =  $data['post_desc'];
+        $post_tags =  $data['post_tags'];
+        $post_author =  $data['post_author'];
+        $post_status =  $data['post_status'];
+
+        $query = "INSERT INTO posts (post_title, post_slug, post_img, cate_id, post_desc, post_tags, post_author, post_status) values('$post_title','$post_slug', '$post_img', '$post_category', '$post_desc', '$post_tags', '$post_author', '$post_status')";
+
+        if (mysqli_query($this->conn, $query)) {
+            move_uploaded_file($post_img_src, $post_img_des);
+            header("location:add_post.php?msg=success");
+        } else {
+            header("location:add_category.php?msg=failed");
+        }
+    }
 }
