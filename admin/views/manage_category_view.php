@@ -38,7 +38,7 @@ if (isset($_GET['status'])) {
             </div>
             <div class="card-body">
                 <div class="table-responsive-md">
-                    <table id="myTable" class="table table-bordered text-center">
+                    <table id="myTable" class="table table-hover text-center">
                         <thead>
                             <tr>
                                 <th>Category Name</th>

@@ -176,4 +176,29 @@ class adminBlog
             header("location:add_category.php?msg=failed");
         }
     }
+
+    // View Post
+    public function post_view()
+    {
+        $query = "SELECT posts.id, posts.post_title, posts.cate_id, posts.post_author, posts.post_status, posts.post_total_views, posts.updated_at , categories.cate_name FROM posts INNER JOIN categories ON posts.cate_id=categories.id";
+
+        if (mysqli_query($this->conn, $query)) {
+            $posts = mysqli_query($this->conn, $query);
+            // print_r($posts);
+            return $posts;
+        } else {
+            header("location:add_post.php?msg=failed");
+        }
+    }
+
+    // Delete Post
+    public function post_delete($post_id)
+    {
+        $query = "DELETE FROM posts WHERE id = $post_id";
+        if (mysqli_query($this->conn, $query)) {
+            header("location:manage_post.php?msg=deletesuccess");
+        } else {
+            header("location:manage_post.php?msg=failed");
+        }
+    }
 }
