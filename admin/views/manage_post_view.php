@@ -41,6 +41,7 @@ if (isset($_GET['status'])) {
                     <table id="datatablesSimple" class="table table-hover">
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Title</th>
                                 <th>Category</th>
                                 <th>Author</th>
@@ -52,6 +53,7 @@ if (isset($_GET['status'])) {
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>Image</th>
                                 <th>Title</th>
                                 <th>Category</th>
                                 <th>Author</th>
@@ -66,6 +68,22 @@ if (isset($_GET['status'])) {
                             while ($item = mysqli_fetch_assoc($result)) {
                             ?>
                                 <tr>
+                                    <td>
+
+                                        <?php
+                                        if ($item['post_img']) {
+                                        ?>
+                                            <img src="<?php echo "post_images/" . $item['post_img'] ?>" style="width: 120px;">
+                                        <?Php
+                                        } else {
+                                        ?>
+                                            <img src="assets/No Image.jpg" alt="post image" style="width: 120px;">
+                                        <?php
+                                        }
+                                        ?>
+                                        <br>
+                                        <a href="edit_post_image.php?status=edit_image&&id=<?= $item['id'] ?>" class="btn btn-sm btn-info mt-1" style="width: 120px;">Update Image</a>
+                                    </td>
                                     <td><?= $item['post_title'] ?></td>
                                     <td><?= $item['cate_name'] ?></td>
                                     <td><?= $item['post_author'] ?></td>

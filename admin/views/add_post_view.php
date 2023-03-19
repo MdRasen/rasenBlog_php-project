@@ -1,6 +1,7 @@
 <?php
 
 $result = $obj->cate_view();
+$cate_result = $obj->post_cate_view();
 
 if (isset($_POST['post_submit'])) {
     $obj->post_create($_POST);
@@ -22,7 +23,7 @@ if (isset($_POST['post_submit'])) {
                         </div>
                     </div>
             <?php
-                    header('Refresh: 4; URL=add_post.php');
+                    header('Refresh: 3; URL=add_post.php');
                 }
             }
             ?>
@@ -56,7 +57,7 @@ if (isset($_POST['post_submit'])) {
                             <div class="form-floating mb-3 mb-md-0">
                                 <select name="post_category" class="form-control">
                                     <?php
-                                    while ($item = mysqli_fetch_assoc($result)) {
+                                    while ($item = mysqli_fetch_assoc($cate_result)) {
                                     ?>
                                         <option value="<?= $item['id'] ?>"><?= $item['cate_name'] ?>
                                         </option>
@@ -79,7 +80,7 @@ if (isset($_POST['post_submit'])) {
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">
-                                <input name="post_author" class="form-control" id="inputPostImg" type="text" placeholder="Enter author name" required />
+                                <input name="post_author" class="form-control" id="inputPostImg" type="text" placeholder="Enter author name" value="Admin" required />
                                 <label for="inputPostAuthor">Author</label>
                             </div>
                         </div>
