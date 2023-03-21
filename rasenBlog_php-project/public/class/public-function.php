@@ -34,7 +34,7 @@ class publicBlog
     // View Post
     public function posts_view()
     {
-        $query = "SELECT posts.id, posts.post_img, posts.post_title, posts.post_desc, posts.cate_id, posts.post_author, posts.post_status, posts.post_total_views, posts.updated_at , categories.cate_name FROM posts INNER JOIN categories ON posts.cate_id=categories.id WHERE posts.post_status='Active' ORDER BY posts.id DESC LIMIT 3";
+        $query = "SELECT posts.id, posts.post_img, posts.post_title, posts.post_slug, posts.post_desc, posts.cate_id, posts.post_author, posts.post_status, posts.post_total_views, posts.updated_at , categories.cate_name, categories.cate_slug FROM posts INNER JOIN categories ON posts.cate_id=categories.id WHERE posts.post_status='Active' ORDER BY posts.id DESC LIMIT 3";
 
         if (mysqli_query($this->conn, $query)) {
             $posts = mysqli_query($this->conn, $query);
@@ -45,11 +45,29 @@ class publicBlog
     // Recent Post
     public function recent_posts()
     {
-        $query = "SELECT posts.id, posts.post_img, posts.post_title, posts.post_desc, posts.cate_id, posts.post_author, posts.post_status, posts.post_total_views, posts.updated_at , categories.cate_name FROM posts INNER JOIN categories ON posts.cate_id=categories.id WHERE posts.post_status='Active' ORDER BY posts.id DESC LIMIT 5";
+        $query = "SELECT posts.id, posts.post_img, posts.post_title, posts.post_slug, posts.post_desc, posts.cate_id, posts.post_author, posts.post_status, posts.post_total_views, posts.updated_at , categories.cate_name, categories.cate_slug FROM posts INNER JOIN categories ON posts.cate_id=categories.id WHERE posts.post_status='Active' ORDER BY posts.id DESC LIMIT 5";
 
         if (mysqli_query($this->conn, $query)) {
             $posts = mysqli_query($this->conn, $query);
             return $posts;
+        }
+    }
+
+    // Single post view
+    public function single_post_view($slug)
+    {
+        $query = "SELECT posts.id, posts.post_img, posts.post_title, posts.post_slug, posts.post_desc, posts.cate_id, posts.post_author, posts.post_status, posts.post_total_views, posts.updated_at , categories.cate_name, categories.cate_slug FROM posts INNER JOIN categories ON posts.cate_id=categories.id WHERE posts.post_slug='$slug'";
+        if (mysqli_query($this->conn, $query)) {
+            $result = mysqli_query($this->conn, $query);
+
+            if (mysqli_num_rows($result)) {
+                $post_info = mysqli_fetch_assoc($result);
+                $new_views = $post_info['post_total_views'] + 1;
+                $query2 = "UPDATE posts SET post_total_views='$new_views' WHERE post_slug='$slug'";
+                mysqli_query($this->conn, $query2);
+
+                return $post_info;
+            }
         }
     }
 }

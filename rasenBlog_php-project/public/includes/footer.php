@@ -12,9 +12,9 @@
             </div>
             <div class="col-lg-12">
                 <div class="copyright-text">
-                    <p>Copyright 2020 Stand Blog Co.
-
-                        | Design: <a rel="nofollow" href="#" target="_parent">TemplateMo</a></p>
+                    <p>Copyright <?php echo date("Y"); ?> rasen Blog.
+                        | Developed By
+                        <a href="https://www.facebook.com/itzAla71" target="_blank" style="text-decoration: none;">MdRasen</a>
                 </div>
             </div>
         </div>

@@ -1,8 +1,6 @@
 <?php
 $post_result = $obj->posts_view();
 $post_result2 = $obj->posts_view();
-$recent_posts = $obj->recent_posts();
-$cate_result2 = $obj->cate_view();
 ?>
 <!-- Page Content -->
 <!-- Banner Starts Here -->
@@ -30,7 +28,7 @@ $cate_result2 = $obj->cate_view();
                                 <div class="meta-category">
                                     <span><?= $item['cate_name'] ?></span>
                                 </div>
-                                <a href="post-details.html">
+                                <a href="single-post.php?status=view_post&&slug=<?= $item['post_slug'] ?>">
                                     <h4><?= $item['post_title'] ?></h4>
                                 </a>
                                 <ul class="post-info">
@@ -52,7 +50,7 @@ $cate_result2 = $obj->cate_view();
                             <div class="meta-category">
                                 <span>Category</span>
                             </div>
-                            <a href="post-details.html">
+                            <a href="#">
                                 <h4>This is demo title</h4>
                             </a>
                             <ul class="post-info">
@@ -119,7 +117,7 @@ $cate_result2 = $obj->cate_view();
                                     </div>
                                     <div class="down-content">
                                         <span><?= $item['cate_name'] ?></span>
-                                        <a href="post-details.html">
+                                        <a href="single-post.php?status=view_post&&slug=<?= $item['post_slug'] ?>">
                                             <h4><?= $item['post_title'] ?></h4>
                                         </a>
                                         <ul class="post-info">
@@ -138,8 +136,8 @@ $cate_result2 = $obj->cate_view();
                                                 <div class="col-6">
                                                     <ul class="post-tags">
                                                         <li><i class="fa fa-tags"></i></li>
-                                                        <li><a href="#">Beauty</a>,</li>
-                                                        <li><a href="#">Nature</a></li>
+                                                        <li><a href="#">Tags</a>,</li>
+                                                        <li><a href="#">Posts</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-6">
@@ -165,71 +163,7 @@ $cate_result2 = $obj->cate_view();
             </div>
             <div class="col-lg-4">
                 <div class="sidebar">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="sidebar-item search">
-                                <form id="search_form" name="gs" method="GET" action="#">
-                                    <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="sidebar-item recent-posts">
-                                <div class="sidebar-heading">
-                                    <h2>Recent Posts</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        <?php
-                                        while ($item = mysqli_fetch_assoc($recent_posts)) {
-                                        ?>
-                                            <li>
-                                                <a href="#">
-                                                    <h5><?= $item['post_title'] ?></h5>
-                                                    <span><?= date("M d, Y", strtotime($item['updated_at'])) ?></span>
-                                                </a>
-                                            </li>
-                                        <?php } ?>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="sidebar-item categories">
-                                <div class="sidebar-heading">
-                                    <h2>Categories</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        <?php
-                                        while ($item = mysqli_fetch_assoc($cate_result2)) {
-                                        ?>
-                                            <li><a href="#">- <?= $item['cate_name'] ?></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="sidebar-item tags">
-                                <div class="sidebar-heading">
-                                    <h2>Tag Clouds</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        <li><a href="#">Lifestyle</a></li>
-                                        <li><a href="#">Creative</a></li>
-                                        <li><a href="#">HTML5</a></li>
-                                        <li><a href="#">Inspiration</a></li>
-                                        <li><a href="#">Motivation</a></li>
-                                        <li><a href="#">PSD</a></li>
-                                        <li><a href="#">Responsive</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?Php include_once("includes/side-bar.php"); ?>
                 </div>
             </div>
         </div>
