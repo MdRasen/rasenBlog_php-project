@@ -58,7 +58,7 @@ if (isset($_SESSION['adminID'])) {
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="#" style="text-decoration: none;">Go Back</a></div>
+                                    <div class="small"><a href="../index.php" style="text-decoration: none;">Go Back</a></div>
                                 </div>
                             </div>
                         </div>

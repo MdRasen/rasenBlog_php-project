@@ -25,6 +25,9 @@ $cate_result = $obj->cate_view();
                             <a class="nav-link" href="#"><?= $item['cate_name'] ?></a>
                         </li>
                     <?php } ?>
+                    <li class="nav-item">
+                        <a href="../admin/" class="btn px-3" style="color: white; background-color: #F59B40;border:none;">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>

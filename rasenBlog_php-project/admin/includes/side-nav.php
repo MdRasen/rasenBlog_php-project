@@ -35,7 +35,11 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <?php
+            if (isset($_SESSION['adminName'])) {
+                echo $_SESSION['adminName'];
+            }
+            ?>
         </div>
     </nav>
 </div>
